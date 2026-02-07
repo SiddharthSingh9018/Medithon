@@ -1,15 +1,21 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 
 @dataclass(frozen=True)
 class SocialNode:
     node_id: str
-    platform: str
-    activity_level: Optional[str] = None
-    influence_proxy: Optional[str] = None
+    timestamp: str
+    text: str
+    emotion: Optional[str]
+    emotion_intensity: Optional[float]
+    safety_doubt: bool
+    effectiveness_doubt: bool
+    legitimacy_doubt: bool
+    placebo_failure: bool
+    sentiment_score: float
 
 
 @dataclass(frozen=True)
@@ -23,15 +29,19 @@ class SocialEdge:
 @dataclass(frozen=True)
 class BeliefCluster:
     cluster_id: str
+    node_ids: List[str]
     dominant_belief: str
     internal_coherence: str
     external_exposure: str
     emotional_intensity: str
-    node_ids: List[str]
 
 
 @dataclass(frozen=True)
-class FutureDiagnostic:
-    code: str
-    message: str
-    notes: List[str]
+class DiagnosticOutput:
+    drug: str
+    dominant_beliefs: List[str]
+    belief_stability: str
+    propagation_risk: str
+    emotion_pattern: str
+    communication_gap: bool
+    interpretation: str

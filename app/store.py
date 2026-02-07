@@ -43,15 +43,18 @@ class PerceptionSignal:
     emotion_intensity: Optional[int] = None
     perceived_effectiveness: Optional[str] = None
     expectation_alignment: Optional[str] = None
+    perceived_safety: Optional[str] = None
     perceived_side_effects: Optional[str] = None
     perceived_severity: Optional[str] = None
     long_term_safety_fear: bool = False
     perceived_legitimacy: Optional[str] = None
+    legitimacy_doubt: Optional[bool] = None
     brand_trust: Optional[str] = None
     regulatory_belief: Optional[str] = None
     dosage_confusion: bool = False
     self_medication_signal: bool = False
     placebo_activation_likelihood: Optional[str] = None
+    placebo_expectation_alignment: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -172,7 +175,10 @@ class Store:
         self.symptoms = {s["symptom_id"]: Symptom(**s) for s in payload.get("symptoms", [])}
         self.mention_symptoms = {int(k): v for k, v in payload.get("mention_symptoms", {}).items()}
         self.contexts = {c["mention_id"]: Context(**c) for c in payload.get("contexts", [])}
-        self.perceptions = {p["mention_id"]: PerceptionSignal(**p) for p in payload.get("perceptions", [])}
+        self.perceptions = {}
+        for p in payload.get("perceptions", []):
+            normalized = _normalize_perception(p)
+            self.perceptions[normalized["mention_id"]] = PerceptionSignal(**normalized)
         counters = payload.get("counters", {})
         self._drug_id = counters.get("drug_id", max(self.drugs.keys(), default=0) + 1)
         self._mention_id = counters.get("mention_id", max(self.mentions.keys(), default=0) + 1)
@@ -181,3 +187,27 @@ class Store:
 
 
 STORE = Store()
+
+
+def _normalize_perception(p: dict) -> dict:
+    # Accept multiple schemas without breaking the store.
+    normalized = {
+        "mention_id": p.get("mention_id"),
+        "emotion_primary": p.get("emotion_primary") or p.get("emotion"),
+        "emotion_intensity": p.get("emotion_intensity"),
+        "perceived_effectiveness": p.get("perceived_effectiveness"),
+        "expectation_alignment": p.get("expectation_alignment"),
+        "perceived_safety": p.get("perceived_safety"),
+        "perceived_side_effects": p.get("perceived_side_effects"),
+        "perceived_severity": p.get("perceived_severity"),
+        "long_term_safety_fear": p.get("long_term_safety_fear", False),
+        "perceived_legitimacy": p.get("perceived_legitimacy"),
+        "legitimacy_doubt": p.get("legitimacy_doubt"),
+        "brand_trust": p.get("brand_trust"),
+        "regulatory_belief": p.get("regulatory_belief"),
+        "dosage_confusion": p.get("dosage_confusion", False),
+        "self_medication_signal": p.get("self_medication_signal", False),
+        "placebo_activation_likelihood": p.get("placebo_activation_likelihood"),
+        "placebo_expectation_alignment": p.get("placebo_expectation_alignment"),
+    }
+    return normalized
