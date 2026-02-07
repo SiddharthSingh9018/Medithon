@@ -1,1 +1,51 @@
-{"drugs": [{"drug_id": 1, "drug_name": "Crocin", "aliases": ["crocin", "paracetamol", "acetaminophen"], "category": "analgesic", "tracking_status": "active"}], "mentions": [], "symptoms": [], "mention_symptoms": {}, "perceptions": [], "counters": {"drug_id": 2, "mention_id": 1, "symptom_id": 1}}
+{
+  "drugs": [
+    {
+      "drug_id": 1,
+      "drug_name": "Crocin",
+      "aliases": ["crocin", "paracetamol", "acetaminophen"],
+      "category": "analgesic",
+      "tracking_status": "active"
+    }
+  ],
+
+  "mentions": [
+    { "mention_id": 1, "drug_id": 1, "platform": "reddit", "thread_id": "t1", "parent_mention_id": null, "timestamp": "2026-02-06T08:30:00Z", "raw_text": "Crocin doesn’t reduce my fever anymore" },
+    { "mention_id": 2, "drug_id": 1, "platform": "reddit", "thread_id": "t1", "parent_mention_id": 1, "timestamp": "2026-02-06T08:35:00Z", "raw_text": "Same here, used to work earlier" },
+    { "mention_id": 3, "drug_id": 1, "platform": "reddit", "thread_id": "t1", "parent_mention_id": 2, "timestamp": "2026-02-06T08:40:00Z", "raw_text": "Maybe your body built tolerance" },
+
+    { "mention_id": 4, "drug_id": 1, "platform": "reddit", "thread_id": "t2", "parent_mention_id": null, "timestamp": "2026-02-06T09:10:00Z", "raw_text": "Crocin works perfectly for my headaches" },
+    { "mention_id": 5, "drug_id": 1, "platform": "reddit", "thread_id": "t2", "parent_mention_id": 4, "timestamp": "2026-02-06T09:15:00Z", "raw_text": "Yes, safest option compared to others" },
+
+    { "mention_id": 6, "drug_id": 1, "platform": "reddit", "thread_id": "t3", "parent_mention_id": null, "timestamp": "2026-02-06T10:00:00Z", "raw_text": "I heard Crocin causes liver damage long term" },
+    { "mention_id": 7, "drug_id": 1, "platform": "reddit", "thread_id": "t3", "parent_mention_id": 6, "timestamp": "2026-02-06T10:05:00Z", "raw_text": "Source? Sounds exaggerated" },
+
+    { "mention_id": 8, "drug_id": 1, "platform": "reddit", "thread_id": "t4", "parent_mention_id": null, "timestamp": "2026-02-06T11:00:00Z", "raw_text": "Crocin has a 60% fatality rate, avoid it" },
+
+    { "mention_id": 9, "drug_id": 1, "platform": "reddit", "thread_id": "t5", "parent_mention_id": null, "timestamp": "2026-02-06T11:30:00Z", "raw_text": "Doctor prescribed Crocin, no issues so far" },
+    { "mention_id": 10, "drug_id": 1, "platform": "reddit", "thread_id": "t5", "parent_mention_id": 9, "timestamp": "2026-02-06T11:35:00Z", "raw_text": "Been using it for years safely" },
+
+    { "mention_id": 11, "drug_id": 1, "platform": "reddit", "thread_id": "t6", "parent_mention_id": null, "timestamp": "2026-02-06T12:00:00Z", "raw_text": "Crocin feels like placebo these days" },
+    { "mention_id": 12, "drug_id": 1, "platform": "reddit", "thread_id": "t6", "parent_mention_id": 11, "timestamp": "2026-02-06T12:05:00Z", "raw_text": "Expectation matters a lot with pain meds" }
+  ],
+
+  "perceptions": [
+    { "mention_id": 1, "emotion": "frustration", "emotion_intensity": 0.7, "perceived_effectiveness": "low", "perceived_safety": "neutral", "legitimacy_doubt": false, "placebo_expectation_alignment": "misaligned" },
+    { "mention_id": 2, "emotion": "agreement", "emotion_intensity": 0.6, "perceived_effectiveness": "low", "perceived_safety": "neutral", "legitimacy_doubt": false, "placebo_expectation_alignment": "misaligned" },
+    { "mention_id": 3, "emotion": "neutral", "emotion_intensity": 0.3, "perceived_effectiveness": "mixed", "perceived_safety": "neutral", "legitimacy_doubt": false, "placebo_expectation_alignment": "uncertain" },
+
+    { "mention_id": 4, "emotion": "relief", "emotion_intensity": 0.5, "perceived_effectiveness": "high", "perceived_safety": "safe", "legitimacy_doubt": false, "placebo_expectation_alignment": "aligned" },
+    { "mention_id": 5, "emotion": "confidence", "emotion_intensity": 0.6, "perceived_effectiveness": "high", "perceived_safety": "safe", "legitimacy_doubt": false, "placebo_expectation_alignment": "aligned" },
+
+    { "mention_id": 6, "emotion": "fear", "emotion_intensity": 0.8, "perceived_effectiveness": "unknown", "perceived_safety": "unsafe", "legitimacy_doubt": true, "placebo_expectation_alignment": "collapsed" },
+    { "mention_id": 7, "emotion": "skepticism", "emotion_intensity": 0.4, "perceived_effectiveness": "unknown", "perceived_safety": "uncertain", "legitimacy_doubt": false, "placebo_expectation_alignment": "uncertain" },
+
+    { "mention_id": 8, "emotion": "panic", "emotion_intensity": 0.95, "perceived_effectiveness": "unknown", "perceived_safety": "fatal", "legitimacy_doubt": true, "placebo_expectation_alignment": "collapsed" },
+
+    { "mention_id": 9, "emotion": "trust", "emotion_intensity": 0.5, "perceived_effectiveness": "high", "perceived_safety": "safe", "legitimacy_doubt": false, "placebo_expectation_alignment": "aligned" },
+    { "mention_id": 10, "emotion": "reassurance", "emotion_intensity": 0.4, "perceived_effectiveness": "high", "perceived_safety": "safe", "legitimacy_doubt": false, "placebo_expectation_alignment": "aligned" },
+
+    { "mention_id": 11, "emotion": "doubt", "emotion_intensity": 0.6, "perceived_effectiveness": "low", "perceived_safety": "neutral", "legitimacy_doubt": false, "placebo_expectation_alignment": "collapsed" },
+    { "mention_id": 12, "emotion": "reflection", "emotion_intensity": 0.4, "perceived_effectiveness": "mixed", "perceived_safety": "neutral", "legitimacy_doubt": false, "placebo_expectation_alignment": "uncertain" }
+  ]
+}

@@ -9,3 +9,5 @@ class MentionCreate(BaseModel):
     platform: str
     language: Optional[str] = None
     location_raw: Optional[str] = None
+    thread_id: Optional[str] = None
+    parent_mention_id: Optional[int] = None

@@ -1,6 +1,7 @@
 from fastapi import FastAPI
-from app.store import STORE
 from app.api.routes import router as api_router
+from app.future.routes import router as future_router
+from app.store import STORE
 
 app = FastAPI(
     title="Pharma Market Perception and Misinformation Intelligence",
@@ -8,6 +9,7 @@ app = FastAPI(
 )
 
 app.include_router(api_router)
+app.include_router(future_router)
 
 @app.on_event("startup")
 def load_store():

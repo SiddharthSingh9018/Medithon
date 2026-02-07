@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from dataclasses import dataclass, asdict
 from datetime import datetime
 from typing import Dict, List, Optional
@@ -27,6 +25,8 @@ class Mention:
     platform: str
     language: Optional[str] = None
     location_raw: Optional[str] = None
+    thread_id: Optional[str] = None
+    parent_mention_id: Optional[int] = None
 
 
 @dataclass(frozen=True)
@@ -99,7 +99,9 @@ class Store:
 
     def add_mention(self, drug_id: int, raw_text: str, timestamp: datetime,
                     platform: str, language: Optional[str] = None,
-                    location_raw: Optional[str] = None) -> Mention:
+                    location_raw: Optional[str] = None,
+                    thread_id: Optional[str] = None,
+                    parent_mention_id: Optional[int] = None) -> Mention:
         mention = Mention(
             mention_id=self._mention_id,
             drug_id=drug_id,
@@ -108,6 +110,8 @@ class Store:
             platform=platform,
             language=language,
             location_raw=location_raw,
+            thread_id=thread_id,
+            parent_mention_id=parent_mention_id,
         )
         self.mentions[self._mention_id] = mention
         self._mention_id += 1
