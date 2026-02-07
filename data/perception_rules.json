@@ -1,0 +1,38 @@
+{
+  "safety_panic": {
+    "match": ["causes cancer", "toxic", "dangerous", "unsafe", "long term damage"],
+    "fields": {
+      "emotion_primary": "fear",
+      "perceived_severity": "high",
+      "long_term_safety_fear": true
+    }
+  },
+  "effectiveness_doubt": {
+    "match": ["doesn't work", "doesnt work", "no relief", "still fever", "did nothing"],
+    "fields": {
+      "emotion_primary": "doubt",
+      "perceived_effectiveness": "low"
+    }
+  },
+  "legitimacy_collapse": {
+    "match": ["fake", "not real medicine", "scam", "counterfeit"],
+    "fields": {
+      "perceived_legitimacy": "low",
+      "brand_trust": "low"
+    }
+  },
+  "dosage_misuse": {
+    "match": ["double dose", "took extra", "overdosed", "too much"],
+    "fields": {
+      "dosage_confusion": true,
+      "self_medication_signal": true
+    }
+  },
+  "placebo_failure": {
+    "match": ["used to work", "stopped working", "all in my head", "just placebo"],
+    "fields": {
+      "expectation_alignment": "low",
+      "placebo_activation_likelihood": "low"
+    }
+  }
+}

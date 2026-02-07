@@ -1,0 +1,10 @@
+{
+  "drugs": [
+    {
+      "drug_name": "Crocin",
+      "aliases": ["crocin", "paracetamol", "acetaminophen"],
+      "category": "analgesic",
+      "tracking_status": "active"
+    }
+  ]
+}
